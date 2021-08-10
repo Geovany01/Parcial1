@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package vista;
-import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,12 +16,13 @@ public class FrmVista extends javax.swing.JFrame {
     /**
      * Creates new form FrmVista
      */
-    DefaultTableModel tAutomovil;
+    DefaultTableModel tVehiculo;
     public FrmVista() {
         initComponents();
+        tVehiculo = new DefaultTableModel();
         String encabezado[]={"Marca","Modelo","Color","Matrícula","Precio"};
-        tAutomovil.setColumnIdentifiers(encabezado);
-        tblAutomovil.setModel(tAutomovil);
+        tVehiculo.setColumnIdentifiers(encabezado);
+        tblAutomovil.setModel(tVehiculo);
     }
 
     /**
@@ -99,15 +99,22 @@ public class FrmVista extends javax.swing.JFrame {
 
         tblAutomovil.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
+        tblAutomovil.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                tblAutomovilInputMethodTextChanged(evt);
+            }
+        });
         jScrollPane3.setViewportView(tblAutomovil);
 
         jtb_secundario.addTab("Automovil", jScrollPane3);
@@ -213,13 +220,13 @@ public class FrmVista extends javax.swing.JFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
         /* Fila de la tabla*/
-        String datos[] = new String[7];
+        String datos[] = new String[5];
         datos[0] = txtMarca.getText();
         datos[1] = txtModelo.getText();
         datos[2] = txtColor.getText();
         datos[3] = txtMatricula.getText();
         datos[4] = txtPrecio.getText();
-        tAutomovil.addRow(datos);
+        tVehiculo.addRow(datos);
         JOptionPane.showMessageDialog(rootPane, "Ingreso Correcto","Mensaje",JOptionPane.INFORMATION_MESSAGE);
 
     }//GEN-LAST:event_btnAgregarActionPerformed
@@ -247,6 +254,10 @@ public class FrmVista extends javax.swing.JFrame {
     private void jPanel1ComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentResized
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel1ComponentResized
+
+    private void tblAutomovilInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_tblAutomovilInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblAutomovilInputMethodTextChanged
 
     /**
      * @param args the command line arguments
